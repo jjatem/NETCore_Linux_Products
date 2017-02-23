@@ -9,7 +9,7 @@ namespace TodoApi.Controllers
     {
         public TodoController()
         {
-            TodoItems = new TodoRepository(new List<TodoItem>());
+            TodoItems = new TodoRepository();
         }
         private static ITodoRepository TodoItems = null;
 
@@ -28,6 +28,19 @@ namespace TodoApi.Controllers
                 return NotFound();
             }
             return new ObjectResult(item);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] TodoItem item)
+        {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+
+            TodoItems.Add(item);
+
+            return CreatedAtRoute("GetTodo", new { id = item.Key }, item);
         }
     }
 

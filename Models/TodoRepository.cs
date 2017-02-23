@@ -6,14 +6,14 @@ namespace TodoApi.Models
 {
     public class TodoRepository : ITodoRepository
     {
-        private readonly List<TodoItem> _context = new List<TodoItem>();
+        private static readonly List<TodoItem> _context = new List<TodoItem>();
 
-        public TodoRepository(List<TodoItem> context)
+        static TodoRepository()
         {
-            _context = context;
-            Add(new TodoItem{ Name="Item1"});
-            Add(new TodoItem{ Name="Item2"});
-            Add(new TodoItem{ Name="Item3"});
+            _context = new List<TodoItem>();
+            _context.Add(new TodoItem{ Name="Item1"});
+            _context.Add(new TodoItem{ Name="Item2"});
+            _context.Add(new TodoItem{ Name="Item3"});
         }
 
         public void Add(TodoItem item)
