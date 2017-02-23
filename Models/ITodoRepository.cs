@@ -8,6 +8,6 @@ namespace TodoApi.Models
         IEnumerable<TodoItem> GetAll();
         TodoItem Find(long key);
         void Remove(long key);
-        void Update(long key);
+        void Update(TodoItem item);
     }
 }

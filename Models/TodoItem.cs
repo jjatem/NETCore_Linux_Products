@@ -5,11 +5,18 @@ namespace TodoApi.Models
 {
     public class TodoItem
     {
+        private static long IdCounter = 0;
+
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Key {get;set;}
         public string Name {get;set;}
         public bool IsComplete {get;set;}
+
+        public TodoItem()
+        {
+            IdCounter++;
+            this.Key = IdCounter;
+        }
 
     }
 }

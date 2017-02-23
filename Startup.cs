@@ -55,7 +55,11 @@ namespace WebApplication
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
+            // Add WebAPI JSON Formatters
             services.AddMvcCore().AddJsonFormatters();
+
+            // Add Repository singleton object
+            //services.AddSingleton<ITodoRepository, TodoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
